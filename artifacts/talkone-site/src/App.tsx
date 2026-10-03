@@ -1,11 +1,12 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Route, Switch, Link, useLocation, Router as WouterRouter } from 'wouter';
 import {
-  ArrowDown, ArrowRight, Check, Headphones, Heart, LockKeyhole,
+  ArrowDown, ArrowRight, Check, Headphones, Heart,
   Menu, MessageCircle, Plus, Repeat2, ShieldCheck, Sparkles, Users, X,
 } from 'lucide-react';
 import { siteContent } from '@/data/siteContent';
 import NotFound from '@/pages/not-found';
+import ListenerRegistration from '@/pages/ListenerRegistration';
 
 function setMetaContent(selector: string, content: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', content);
@@ -142,73 +143,6 @@ function HomePage() {
     </main>
     <Footer />
   </div>;
-}
-
-type ContactMethod = 'phone' | 'email';
-function ListenerRegistration() {
-  const [method, setMethod] = useState<ContactMethod>('phone');
-  const [contact, setContact] = useState('');
-  const [error, setError] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  useEffect(() => {
-    document.title = 'Listener Registration — TalkOne';
-    const description = 'Express interest in becoming a TalkOne listener. This frontend demo collects only a phone number or email address and sends nothing.';
-    setMetaContent('meta[name="description"]', description);
-    setMetaContent('meta[property="og:title"]', 'Listener Registration — TalkOne');
-    setMetaContent('meta[property="og:description"]', description);
-    setMetaContent('meta[name="twitter:title"]', 'Listener Registration — TalkOne');
-    setMetaContent('meta[name="twitter:description"]', description);
-  }, []);
-  const changeMethod = (next: ContactMethod) => { setMethod(next); setContact(''); setError(''); setStatus('idle'); };
-  const validate = () => {
-    const value = contact.trim();
-    if (!value) return method === 'email' ? 'Enter your email address.' : 'Enter your phone number.';
-    if (method === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Enter a valid email address.';
-    if (method === 'phone' && !/^[+\d][\d\s().-]{6,19}$/.test(value)) return 'Enter a valid phone number.';
-    return '';
-  };
-  async function handleListenerRegistration(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const validation = validate();
-    setError(validation);
-    setStatus('idle');
-    if (validation) return;
-    const registrationData = { method, contact: contact.trim() };
-    // TODO: Integrate TalkOne's existing Listener Registration API here when authorized.
-    // No request is made and this data is not stored or transmitted.
-    void registrationData;
-    setStatus('loading');
-    try {
-      await new Promise((resolve) => window.setTimeout(resolve, 650));
-      setStatus('success');
-    } catch {
-      setStatus('error');
-    }
-  }
-  return <div className="site-shell"><Header /><main className="registration">
-    <div className="wrap registration-wrap">
-      <div className="registration-intro"><span className="eyebrow">A first step, not an application</span><h1>Make a little room to listen.</h1><p>Thank you for being curious about becoming a TalkOne listener. We’d love to learn more when registration is ready.</p>
-        <div className="notice">The mobile signup reference shows a choice of phone or email to create a regular account. A listener-specific form was not provided, so we won’t guess at profile, availability, document, or verification details.</div>
-        <div className="notice">This page is a frontend demo. Entering a contact method here does not send it to TalkOne, create an account, or submit an application.</div>
-      </div>
-      <form className="form-card" onSubmit={handleListenerRegistration} noValidate>
-        <h2>Leave a way to reach you</h2><p className="form-subtitle">Choose one contact method to express interest.</p>
-        <div className="method-tabs" role="tablist" aria-label="Choose contact method">
-          <button type="button" role="tab" aria-selected={method === 'phone'} className="method-tab" onClick={() => changeMethod('phone')} data-testid="tab-phone">Phone</button>
-          <button type="button" role="tab" aria-selected={method === 'email'} className="method-tab" onClick={() => changeMethod('email')} data-testid="tab-email">Email</button>
-        </div>
-        <label className="field-label" htmlFor="contact-method">{method === 'phone' ? 'Phone number' : 'Email address'} <span aria-hidden="true">*</span></label>
-        {method === 'phone' ? <div className="phone-row"><span className="phone-prefix" aria-label="Country calling code plus 91">+91</span><input id="contact-method" className="field-input" type="tel" autoComplete="tel" inputMode="tel" placeholder="Your phone number" value={contact} onChange={(event) => { setContact(event.target.value); setError(''); setStatus('idle'); }} aria-invalid={Boolean(error)} aria-describedby={error ? 'contact-error' : 'contact-hint'} data-testid="input-phone" /></div> :
-          <input id="contact-method" className="field-input" type="email" autoComplete="email" inputMode="email" placeholder="you@example.com" value={contact} onChange={(event) => { setContact(event.target.value); setError(''); setStatus('idle'); }} aria-invalid={Boolean(error)} aria-describedby={error ? 'contact-error' : 'contact-hint'} data-testid="input-email" />}
-        {error && <p className="field-error" id="contact-error" role="alert">{error}</p>}
-        <p className="privacy-note" id="contact-hint"><LockKeyhole size={16} />The screenshot shows phone/email signup options, but its OTP flow belongs to the app. This website does not request a code or send your details anywhere.</p>
-        <button className="button button-dark form-submit" type="submit" disabled={status === 'loading'} data-testid="button-submit-interest">{status === 'loading' ? 'Preparing demo…' : <>Express interest <ArrowRight size={16} /></>}</button>
-        {status === 'success' && <p className="form-feedback success" role="status" data-testid="status-submit-success">Demo complete — nothing was sent or saved. Listener registration is not open through this website yet.</p>}
-        {status === 'error' && <p className="form-feedback error" role="alert" data-testid="status-submit-error">The demo could not complete. Please try again; no information has been sent.</p>}
-        <p className="form-legal">Only a phone number or email field is shown, based on the supplied account signup reference. No listener profile, availability, document, or verification details are collected.</p>
-      </form>
-    </div>
-  </main><Footer /></div>;
 }
 
 function Router() {

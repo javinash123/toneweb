@@ -48,8 +48,9 @@ export const siteContent: {
     { q: 'What is TalkOne?', a: 'TalkOne is a platform that helps people looking for conversation connect with human listeners who are ready to make time for them.' },
     { q: 'What can I talk about?', a: 'Everyday challenges, relationships, work, feeling lonely, a recent win, or something else on your mind. You choose what to share and when.' },
     { q: 'Is TalkOne a therapy or emergency service?', a: 'No. TalkOne is for human conversation and listening. It does not provide clinical care, therapy, or emergency support. If you need urgent help, contact local emergency services or a trusted professional.' },
-    { q: 'How do I become a listener?', a: 'Start with the listener registration page. For now, it only asks for an email address or phone number so you can express interest. This website does not send or store the information.' },
-    { q: 'Is this form connected to TalkOne?', a: 'Not yet. The listener form is a frontend demonstration only. Submitting it does not contact TalkOne, create an account, verify your details, or submit an application.' },
+    { q: 'How do I become a listener?', a: 'Explore the complete browser-only registration demo: choose mobile or email, then work through nine sections covering basic details, topics, your story, profile and audio introductions, availability, pricing, KYC, and bank details. No OTP is sent.' },
+    { q: 'Is listener registration connected to TalkOne?', a: 'No. This is a frontend-only demo. Values and selected files remain in browser component memory and disappear when you leave or reload. Nothing is transmitted, stored, reviewed, or submitted. Avoid entering real personal, bank, or identity information.' },
+    { q: 'Does the confirmation mean my application was submitted?', a: 'No. The final screen is a demo status only. It does not create an application ID, begin a review, provide a real review time, or enable status tracking. The integration point is src/services/listenerService.ts.' },
     { q: 'Where can I get the app?', a: 'App Store and Google Play links will be added here when official download pages are available.' },
   ],
   placeholders: {
