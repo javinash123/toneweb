@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "TalkOne"
+description = "A warm marketing website for TalkOne that explains the platform, helps people learn how to connect with listeners, and offers a frontend-only listener registration experience."
+version = "1.0.0"
+id = "artifacts/talkone-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21842
+
+[services.development]
+run = "pnpm --filter @workspace/talkone-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/talkone-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/talkone-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21842"
+BASE_PATH = "/"

@@ -1,0 +1,567 @@
+Build a modern, professional, responsive marketing website for an application called "TalkOne".
+
+IMPORTANT:
+This is primarily a FRONTEND WEBSITE / MARKETING WEBSITE.
+
+Do NOT build the backend.
+Do NOT create database logic.
+Do NOT create API endpoints.
+Do NOT integrate any APIs.
+Do NOT implement authentication.
+Do NOT implement payment.
+Do NOT implement AI.
+Do NOT modify or invent my existing APIs.
+
+I will manually integrate my existing APIs later, especially the Listener Registration API. Therefore, keep the frontend code clean and structured so that API integration can easily be added later.
+
+I will also provide a screenshot of the Listener Registration form from the TalkOne mobile app.
+
+Use the uploaded mobile-app screenshot as the PRIMARY REFERENCE for:
+- Registration fields
+- Field labels
+- Field order
+- Required/optional fields
+- Input types
+- General registration flow
+
+However, DO NOT simply copy the mobile app UI.
+
+The website should have a modern desktop/web experience while keeping the same registration information and terminology used by the mobile application.
+
+==================================================
+PROJECT PURPOSE
+==================================================
+
+TalkOne is a platform designed to connect people who need someone to talk to with human listeners who can provide support and conversation.
+
+The website should clearly explain:
+- What TalkOne is
+- Why TalkOne exists
+- How TalkOne works
+- Who TalkOne is for
+- How users can benefit from the platform
+- How listeners can join the platform
+- How listeners can register
+- Download/use the mobile application
+
+The website is mainly informational/static, with ONE important interactive feature:
+
+"Become a Listener" / "Listener Registration"
+
+The listener registration form should be fully designed on the frontend but should NOT be connected to an API yet.
+
+==================================================
+WEBSITE STRUCTURE
+==================================================
+
+Create the following pages/sections:
+
+1. HOME
+
+2. ABOUT TALKONE
+
+3. HOW IT WORKS
+
+4. FOR USERS
+
+5. BECOME A LISTENER
+
+6. LISTENER REGISTRATION
+
+7. FAQ
+
+8. CONTACT
+
+9. FOOTER
+
+Use a proper navigation menu.
+
+Desktop:
+- Logo on the left
+- Navigation in the center/right
+- Primary CTA button: "Become a Listener"
+- Secondary CTA where appropriate: "Get Started"
+
+Mobile:
+- Responsive hamburger menu
+- Touch-friendly buttons
+- Proper spacing
+- No horizontal scrolling
+
+==================================================
+HOME PAGE
+==================================================
+
+Create a strong hero section.
+
+Suggested messaging:
+
+Headline:
+"Sometimes, All You Need Is Someone to Talk To."
+
+Supporting text:
+"TalkOne connects people who want to be heard with listeners who are ready to listen."
+
+Primary CTA:
+"Find a Listener"
+
+Secondary CTA:
+"Become a Listener"
+
+Do not make medical or clinical claims.
+
+Avoid language suggesting that TalkOne replaces doctors, therapists, psychologists, emergency services, or professional medical care.
+
+The design should communicate:
+- Human connection
+- Listening
+- Support
+- Privacy
+- Trust
+- Accessibility
+- Meaningful conversations
+
+Include a visually appealing hero illustration or abstract human-connection visual.
+
+Do NOT use excessive stock-photo style imagery.
+
+==================================================
+WHAT IS TALKONE
+==================================================
+
+Create a section explaining TalkOne in simple language.
+
+Example:
+
+"TalkOne is a platform that makes it easier to find someone willing to listen. Whether someone needs to talk about everyday challenges, relationships, career concerns, loneliness, or simply wants a conversation, TalkOne is designed to make human connection more accessible."
+
+Keep the content editable from a centralized content/config file where practical.
+
+==================================================
+HOW TALKONE WORKS
+==================================================
+
+Create a 3 or 4 step visual process.
+
+Example:
+
+1. Share what you need
+2. Find a suitable listener
+3. Start a conversation
+4. Continue building meaningful connections
+
+Use clean icons/illustrations.
+
+==================================================
+FOR USERS
+==================================================
+
+Create a section explaining the benefits for people looking for someone to talk to.
+
+Possible points:
+
+- Find someone who matches your needs
+- Choose from available listeners
+- Start meaningful conversations
+- Track your interactions
+- Build supportive connections
+
+Do not make unsupported medical/mental-health treatment claims.
+
+==================================================
+BECOME A LISTENER
+==================================================
+
+This is an important conversion section.
+
+Headline:
+"Someone Out There May Need Someone Like You."
+
+Explain that listeners can join TalkOne and make themselves available to people looking for someone to talk to.
+
+Include benefits such as:
+
+- Make a positive difference
+- Share your time and listening skills
+- Connect with people who need someone to listen
+- Build your listener profile
+- Manage your availability
+
+CTA:
+"Become a Listener"
+
+This button should navigate to the Listener Registration page.
+
+==================================================
+LISTENER REGISTRATION
+==================================================
+
+Create a professional multi-section registration form.
+
+IMPORTANT:
+
+I will upload a screenshot from the TalkOne mobile application.
+
+Use that screenshot to determine the actual fields and terminology.
+
+Do not invent registration fields if they are visible in the screenshot.
+
+If additional fields are necessary for good web UX, keep them minimal and clearly separated.
+
+Organize the form into logical sections if there are many fields.
+
+For example:
+
+PERSONAL INFORMATION
+
+- Full Name
+- Email
+- Phone
+- Date of Birth / Age, if present in the mobile form
+- Gender, if present
+
+LISTENER PROFILE
+
+- About You
+- Languages
+- Areas of Interest / Expertise
+- Listening Experience, if present
+- Topics you are comfortable discussing
+
+AVAILABILITY
+
+- Availability
+- Preferred days/times
+- Time zone, if required
+
+ACCOUNT INFORMATION
+
+- Password
+- Confirm Password
+
+DOCUMENTS / VERIFICATION
+
+Only include fields that actually exist in the supplied mobile screenshot.
+
+Do not invent KYC/document requirements.
+
+==================================================
+FORM UX
+==================================================
+
+The registration form should have:
+
+- Clear labels
+- Required/optional indicators
+- Inline validation
+- Proper error messages
+- Character counters where appropriate
+- Password visibility toggle
+- Dropdowns where appropriate
+- Multi-select controls where appropriate
+- File upload UI if required by the screenshot
+- Loading state
+- Success state
+- Error state
+
+For now, form submission should NOT call any API.
+
+Instead:
+
+Create a clean frontend submission handler such as:
+
+handleListenerRegistration()
+
+Inside it, add a clearly marked TODO:
+
+// TODO: Integrate existing TalkOne Listener Registration API here
+
+The form data should be collected into one clean object so I can easily replace the mock submission with my API call later.
+
+Example:
+
+const registrationData = {
+   ...
+};
+
+Do not send this data anywhere.
+
+After mock submission, show a professional success message such as:
+
+"Thank you for registering as a TalkOne Listener. Your application has been submitted."
+
+But clearly structure the code so the mock submission can later be replaced with the real API.
+
+==================================================
+IMPORTANT API INTEGRATION RULE
+==================================================
+
+I already have backend APIs.
+
+Do NOT create:
+- Express server
+- Node backend
+- Database
+- Firebase
+- Supabase
+- Authentication backend
+- REST API
+- GraphQL API
+
+Only prepare the frontend integration point.
+
+Use a service structure such as:
+
+src/services/listenerService.js
+
+with a placeholder function:
+
+registerListener(data)
+
+For now this function can return a mock response.
+
+Add a clear comment:
+
+// TODO: Replace mock implementation with TalkOne production API
+
+This will allow me to integrate the API manually later.
+
+==================================================
+DESIGN DIRECTION
+==================================================
+
+The website should feel:
+
+- Modern
+- Warm
+- Human
+- Trustworthy
+- Premium
+- Simple
+- Professional
+- Accessible
+
+Avoid making it look like:
+- A generic SaaS dashboard
+- A medical/hospital website
+- A corporate banking website
+- An overly colorful children's website
+
+The emotional tone should communicate:
+
+"Someone is here to listen."
+
+Use generous whitespace.
+
+Use subtle animations.
+
+Use smooth scrolling.
+
+Use modern cards.
+
+Use subtle gradients where appropriate.
+
+Use rounded corners but do not overuse them.
+
+Typography should be clean and highly readable.
+
+==================================================
+RESPONSIVE DESIGN
+==================================================
+
+The website must work properly on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Test layouts at approximately:
+
+1440px
+1280px
+1024px
+768px
+480px
+375px
+
+The listener registration form is particularly important on mobile.
+
+Do not allow:
+- Horizontal scrolling
+- Broken layouts
+- Overlapping elements
+- Tiny text
+- Buttons extending outside the viewport
+
+==================================================
+ACCESSIBILITY
+==================================================
+
+Use semantic HTML.
+
+Every form field should have a proper label.
+
+Buttons must be keyboard accessible.
+
+Use appropriate focus states.
+
+Use sufficient contrast.
+
+Images should have meaningful alt text.
+
+Validation errors should be understandable.
+
+==================================================
+SEO
+==================================================
+
+Since this is a public marketing website, implement basic SEO.
+
+Include:
+
+- Page title
+- Meta description
+- Open Graph metadata
+- Proper H1/H2/H3 hierarchy
+- Semantic HTML
+- Descriptive image alt text
+- Clean URLs
+
+Suggested homepage title:
+
+"TalkOne – Someone Is Here to Listen"
+
+Suggested description:
+
+"TalkOne connects people looking for someone to talk to with listeners ready to listen."
+
+Do not make medical claims in SEO content.
+
+==================================================
+TECHNICAL REQUIREMENTS
+==================================================
+
+Use a modern frontend stack suitable for deployment.
+
+Prefer:
+
+React
+Vite
+Tailwind CSS
+
+Keep the project structure clean.
+
+Suggested structure:
+
+src/
+  components/
+  pages/
+  sections/
+  services/
+  assets/
+  data/
+  hooks/
+  utils/
+
+Create reusable components for:
+
+- Header
+- Footer
+- Button
+- SectionHeading
+- FeatureCard
+- StepCard
+- FAQItem
+- FormField
+- SelectField
+- MultiSelect
+- FileUpload
+- RegistrationForm
+- SuccessMessage
+
+Keep content separate from components wherever practical.
+
+==================================================
+CONTENT MANAGEMENT
+==================================================
+
+Because this is initially a static website, keep major website text in a centralized content/data structure where practical.
+
+For example:
+
+src/data/siteContent.js
+
+This will allow me to modify marketing content later without changing component logic.
+
+==================================================
+IMPORTANT: DO NOT OVERBUILD
+==================================================
+
+This is NOT a SaaS dashboard.
+
+Do not build:
+- Admin panel
+- User dashboard
+- Listener dashboard
+- Chat
+- Messaging
+- Calling
+- Notifications
+- AI chatbot
+- Matching engine
+- Payments
+- Subscription system
+- Analytics dashboard
+
+Those are part of the TalkOne application/backend and are outside this website's scope.
+
+The website's job is:
+
+1. Explain TalkOne
+2. Build trust
+3. Explain how it works
+4. Encourage users/listeners to join
+5. Provide the Listener Registration form
+6. Provide links/buttons for app download or getting started
+
+==================================================
+PLACEHOLDERS
+==================================================
+
+Where actual information is not available, use clearly marked placeholders.
+
+Examples:
+
+[TalkOne Logo]
+[App Store Link]
+[Google Play Link]
+[Contact Email]
+[Contact Phone]
+[Privacy Policy URL]
+[Terms URL]
+[Social Media Links]
+
+Do not invent real company information.
+
+==================================================
+FINAL REQUIREMENT
+==================================================
+
+Before finishing:
+
+1. Make sure the website builds successfully.
+2. Make sure there are no console errors.
+3. Test all navigation links.
+4. Test the responsive layout.
+5. Test all registration form validations.
+6. Confirm the registration form does NOT call any external API.
+7. Clearly identify the exact file/function where I should later integrate my existing Listener Registration API.
+8. Provide a short README explaining:
+   - How to run the project
+   - Project structure
+   - Where the listener registration API should be integrated
+   - Where website content can be edited
+   - Where images/assets can be replaced
+
+Build the website as a polished production-quality FRONTEND, but keep the implementation simple enough that I can maintain and modify it myself.
